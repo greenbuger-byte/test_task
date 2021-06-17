@@ -18,7 +18,6 @@ export const roomTranslate = (rooms= 1) =>{
                 text = 'комнаты';
                 break;
         }
-        console.log(rooms, text)
         return text;
     }catch (err){
         console.log(err.message || err);

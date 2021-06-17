@@ -10,5 +10,10 @@
   align-items: center;
 }
 .App {
-
+  position: relative;
+  &__notifications{
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+  }
 }

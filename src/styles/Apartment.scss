@@ -1,88 +1,99 @@
 @import "variables";
-
-.apartment{
-  flex-basis:calc(100% / 3);
-
-  &__inner{
-    margin: 12px;
-    background-color: #f3f7fb;
-    position: relative;
-    cursor: pointer;
-    margin-bottom: 40px;
-  }
-  &__label{
-    padding: 10px;
-    position: absolute;
-    font-size: 12px;
-    max-width: 80px;
-    color: #fff;
-    font-weight: 600;
-
-    &--is-right{
-      left: 100px;
-      top: 10px;
+.apartment {
+    flex-basis: calc(100% / 3);
+    &__inner {
+        margin: 12px;
+        background-color: #f3f7fb;
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 40px;
     }
-    &--is-left{
-      left: 10px;
-      top: 10px;
+    &__like {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 20px;
+        color: #fff;
+        background-color: $primary;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: all .3s ease;
+        z-index: 3;
+        &:hover,
+        &--is-active {
+            font-size: 21px;
+            background-color: $secondary;
+        }
     }
-    &--is-secondary{
-      background-color: $secondary;
+    &__label {
+        padding: 10px;
+        position: absolute;
+        font-size: 12px;
+        max-width: 80px;
+        color: #fff;
+        font-weight: 600;
+        top: 10px;
+        &--is-right {
+            left: 100px;
+        }
+        &--is-left {
+            left: 10px;
+        }
+        &--is-secondary {
+            background-color: $secondary;
+        }
+        &--is-primary {
+            background-color: $primary;
+        }
     }
-    &--is-primary{
-      background-color: $primary;
+    &__image-box {
+        width: 100%;
+        overflow: hidden;
+        height: 300px;
+        box-sizing: border-box;
+        background-size: 200%;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all .6s ease;
+        &:hover {
+            background-size: 220%;
+        }
     }
-  }
-  &__image-box{
-  width: 100%;
-  overflow: hidden;
-  height: 300px;
-  box-sizing: border-box;
-    background-size: 200%;
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: all .6s ease;
-    &:hover{
-      background-size:220% ;
+    &__title {
+        margin-top: -30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background-color: #ff006c;
+        color: #fff;
+        width: 230px;
+        font-weight: bold;
+        height: 30px;
+        padding: 10px;
     }
-  }
-  &__title{
-    margin-top: -30px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    background-color: #ff006c;
-    color: #fff;
-    width:230px;
-    font-weight: bold;
-    height: 30px;
-    padding: 10px;
-  }
-  &__label-address{
-    font-weight: bold;
-    text-align: center;
-    margin: 10px auto;
-  }
-  &__relationships{
-    border-top: 3px solid #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  &__icon{
-    margin-right: 10px;
-  }
-
+    &__label-address {
+        font-weight: bold;
+        text-align: center;
+        margin: 10px auto;
+    }
+    &__relationships {
+        border-top: 3px solid #fff;
+        padding: 20px;
+        text-align: center;
+    }
+    &__icon {
+        margin-right: 10px;
+    }
 }
 
-
-@media (max-width: 800px) {
-  .apartment {
-    flex-basis: calc(100% / 2);
-  }
+@media (max-width: 1000px) {
+    .apartment {
+        flex-basis: calc(100% / 2);
+    }
 }
 
 @media (max-width: 500px) {
-  .apartment {
-    flex-basis: 100%
-  }
+    .apartment {
+        flex-basis: 100%
+    }
 }
