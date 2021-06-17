@@ -1,0 +1,44 @@
+@import "variables";
+
+.header-menu {
+
+  &__nav {
+    list-style: none;
+    display: flex;
+    margin-left: 20px;
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $text;
+    display: flex;
+    margin-left: 20px;
+    padding: 0 20px;
+    align-items: center;
+    font-weight: 700;
+    height: 100%;
+    transition: all .3s ease;
+
+    &:hover, &--active {
+      background-color: $secondary;
+      color: white;
+    }
+
+  }
+
+}
+
+
+@media (max-width: 900px) {
+  .header-menu{
+      display: none;
+  }
+}

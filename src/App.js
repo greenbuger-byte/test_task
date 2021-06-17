@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+
+import './styles/App.scss';
+import {ApartmentsGrid, ContactHeader, Footer, Header} from "./components";
+import {IndexSearchBox} from "./components/IndexSearchBox";
+import {useState, useEffect} from "react";
+import {entitiesRequests} from "./dal/entitiesRequests";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [apartments, setApartments] = useState(null);
+
+  const getApartments = async ()=> {
+    const response = await entitiesRequests.getAll();
+     setApartments(response);
+  }
+  useEffect(()=>{
+    getApartments();
+
+  },[]);
+
+
+
+  return (<div className={'App'}>
+    <ContactHeader/>
+    <Header/>
+    <IndexSearchBox/>
+    <div className={'wrapper'}>
+      {apartments!==null ? <ApartmentsGrid apartments={apartments}/> : 'SEARCH ...'}
     </div>
-  );
+    <Footer/>
+  </div> );
 }
 
 export default App;

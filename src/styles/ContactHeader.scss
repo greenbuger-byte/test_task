@@ -1,0 +1,22 @@
+@import "variables";
+.contact-header {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  background-color: $primary;
+
+  &__inner{
+    padding: 0 15px;
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__link{
+    color: #fff;
+    text-decoration: none;
+    &:hover{
+      color: #b69dff;
+    }
+  }
+}

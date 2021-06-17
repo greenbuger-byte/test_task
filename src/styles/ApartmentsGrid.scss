@@ -1,0 +1,21 @@
+@import "variables";
+.apartments-grid{
+  width: 100%;
+  &__header-inner{
+    text-align: center;
+    width: 100%;
+    padding: 40px 0;
+  }
+  &__subheader{
+    color: #b69dff;
+  }
+  &__header{
+  font-weight: 600;
+    color: $text;
+  }
+  &__inner{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
