@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import '../../../styles/Apartment.scss';
 import homeImage from '../../../assets/imgs/home_index.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,8 +6,7 @@ import {  faMapMarked, faUserCircle, faHeart } from '@fortawesome/free-solid-svg
 import {roomTranslate} from "../../../utils/roomTransliter";
 
 
-export const Apartment = ({id, apartment:{attributes, relationships}}) => {
-    const [like, setLike] = useState(false);
+export const Apartment = ({id, apartment:{attributes, relationships}, like, setLikeHandler}) => {
 
 
     return (
@@ -21,7 +20,7 @@ export const Apartment = ({id, apartment:{attributes, relationships}}) => {
                     <div className={'apartment__label apartment__label--is-right apartment__label--is-secondary'}>
                         {attributes.area} {attributes.unit}
                     </div>
-                    <div onClick={()=>setLike(prev=>!prev)} className={`apartment__like ${like && 'apartment__like--is-active' }`}>
+                    <div onClick={()=>setLikeHandler(id)} className={`apartment__like ${like.length > 0 && like[0]?.status && 'apartment__like--is-active' }`}>
                         <FontAwesomeIcon icon={faHeart}/>
                     </div>
                 </div>

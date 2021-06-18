@@ -3,7 +3,7 @@ export const roomTranslate = (rooms= 1) =>{
     try{
 
         let numberOfRoom = rooms;
-        let text = 'комнат';
+        let text = '';
         switch (numberOfRoom){
             case 1:
                 text = 'комнатa';
@@ -17,6 +17,8 @@ export const roomTranslate = (rooms= 1) =>{
             case 4 :
                 text = 'комнаты';
                 break;
+            default:
+                text = 'комнат';
         }
         return text;
     }catch (err){

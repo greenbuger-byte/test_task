@@ -6,7 +6,7 @@ import {MobileMenu} from "../MobileMenu";
 export const Header = () => {
     const [visible, setVisible] = useState(false);
     return (
-        <div class={'header'}>
+        <div className={'header'}>
             <div className={'header__inner'}>
                 <div className={'header__left-block header__block'}>
                     <div className={'header__logo'}>

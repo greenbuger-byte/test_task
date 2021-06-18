@@ -18,11 +18,16 @@
         padding: 5px 10px;
         border-radius: 4px;
         transition: all .3s ease;
-        z-index: 3;
-        &:hover,
+        z-index: 1;
+        opacity: .9;
+
+        &:hover{
+         opacity: 1;
+        }
         &--is-active {
             font-size: 21px;
             background-color: $secondary;
+
         }
     }
     &__label {
@@ -92,7 +97,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .apartment {
         flex-basis: 100%
     }

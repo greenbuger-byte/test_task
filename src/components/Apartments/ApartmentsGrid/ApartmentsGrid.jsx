@@ -2,7 +2,9 @@ import React from 'react';
 import '../../../styles/ApartmentsGrid.scss';
 import {Apartment} from "../Apartment";
 
-export const ApartmentsGrid = ({apartments}) => {
+export const ApartmentsGrid = ({apartments, likes, setLikeHandler}) => {
+
+
     return (
         <div className={'apartments-grid'}>
             <div className={'apartments-grid__header-inner'}>
@@ -15,7 +17,14 @@ export const ApartmentsGrid = ({apartments}) => {
             </div>
 
             <div className={'apartments-grid__inner'}>
-                {apartments  && apartments.map(apartment=>  <Apartment   key={apartment.id} apartment={apartment}/>)}
+                {apartments  && apartments.map(apartment =>
+                    <Apartment
+                        key={apartment.id}
+                        id={apartment.id}
+                        setLikeHandler={setLikeHandler}
+                        like={likes.length > 0 ? likes.filter(like=>like.apartmentId === apartment.id) : []}
+                        apartment={apartment}/>)
+                }
             </div>
         </div>
     );

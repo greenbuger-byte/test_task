@@ -3,10 +3,26 @@ import { ApartmentsGrid, ContactHeader, Footer, Header } from "./components";
 import { IndexSearchBox } from "./components/IndexSearchBox";
 import { useState, useEffect } from "react";
 import { entitiesRequests } from "./dal/entitiesRequests";
+import {likesRequests} from "./dal/likesRequests";
 
 function App() {
     const [apartments, setApartments] = useState(null);
-    const [notifications, setNotifications] = useState([]);
+    const [likes, setLikes] = useState([]);
+    const setLikeHandler =async (apartmentId)=>{
+        let inState = likes.filter(like=>like.apartmentId === apartmentId)[0];
+        if(inState){
+            await likesRequests.updateLike(inState.id, !inState.status);
+        } else {
+            await likesRequests.setLike(apartmentId);
+        }
+        await loadLikes();
+    }
+
+    const loadLikes = async ()=>{
+        //Только для одного пользователя по умолчанию
+        let likesFromServer = (await likesRequests.forUser());
+        setLikes(likesFromServer);
+    }
 
     const getApartments = async() => {
         const response = await entitiesRequests.getAll();
@@ -14,13 +30,8 @@ function App() {
     }
     useEffect(() => {
         getApartments();
-
+        loadLikes();
     }, []);
-    useEffect(()=>{
-        setTimeout(()=>{
-            setNotifications([])
-        }, 8000)
-    }, [notifications])
 
 
 
@@ -31,7 +42,7 @@ function App() {
             <IndexSearchBox/>
             <div className={ 'wrapper' }>
                 {apartments !== null ?
-                        <ApartmentsGrid   apartments = { apartments }/>
+                        <ApartmentsGrid setLikeHandler={setLikeHandler}  likes={likes} apartments = { apartments }/>
                     : 'SEARCH ...'}
             </div>
 
